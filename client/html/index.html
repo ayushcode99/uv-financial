@@ -1,0 +1,1946 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>University Financial Transparency Portal</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PUBLIC WEBSITE
+===================================================== -->
+
+<div id="publicWebsite">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="main-header">
+
+        <div class="container header-content">
+
+            <div class="university-brand">
+
+                <div class="university-logo">
+                    U
+                </div>
+
+                <div>
+
+                    <h1>
+                        University Financial Portal
+                    </h1>
+
+                    <p>
+                        Financial Transparency & Accountability
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <nav>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#income">
+                    Income
+                </a>
+
+                <a href="#expenses">
+                    Expenses
+                </a>
+
+                <a href="#budget">
+                    Budget
+                </a>
+
+                <a href="#reports">
+                    Reports
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <button
+                    class="admin-login-btn"
+                    onclick="openAdminLogin()">
+
+                    Admin Login
+
+                </button>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <span class="section-label">
+                    FINANCIAL YEAR 2025–26
+                </span>
+
+
+                <h2>
+                    Transparent University
+                    <span>Financial Information</span>
+                </h2>
+
+
+                <p>
+
+                    Access clear and updated information about
+                    university income, expenses, budget allocation,
+                    development expenditure and financial reports.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="#income" class="primary-btn">
+                        Explore Finances
+                    </a>
+
+                    <a href="#reports" class="secondary-btn">
+                        View Reports
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOTAL BUDGET -->
+
+            <div class="hero-financial-card">
+
+                <p>
+                    Total Approved Budget
+                </p>
+
+                <h3 id="publicTotalBudget">
+                    ₹0
+                </h3>
+
+                <span>
+                    Financial Year 2025–26
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= QUICK STATS ================= -->
+
+    <section class="stats-section">
+
+        <div class="container stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Income
+                    </p>
+
+                    <h3 id="publicTotalIncome">
+                        ₹0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon expense">
+                    ↓
+                </div>
+
+                <div>
+
+                    <p>
+                        Total Expenses
+                    </p>
+
+                    <h3 id="publicTotalExpense">
+                        ₹0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon development">
+                    🏗
+                </div>
+
+                <div>
+
+                    <p>
+                        Development
+                    </p>
+
+                    <h3 id="publicDevelopment">
+                        ₹0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon balance">
+                    ✓
+                </div>
+
+                <div>
+
+                    <p>
+                        Remaining Balance
+                    </p>
+
+                    <h3 id="publicBalance">
+                        ₹0
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         INCOME SECTION
+    ====================================================== -->
+
+    <section class="content-section" id="income">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        UNIVERSITY INCOME
+                    </span>
+
+                    <h2>
+                        Where Does University Money Come From?
+                    </h2>
+
+                </div>
+
+                <div class="financial-year">
+
+                    Financial Year:
+                    <strong>
+                        2025–26
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="financial-layout">
+
+
+                <!-- INCOME CHART -->
+
+                <div class="chart-card">
+
+                    <h3>
+                        Income Distribution
+                    </h3>
+
+                    <canvas id="incomeChart"></canvas>
+
+                </div>
+
+
+
+                <!-- INCOME TABLE -->
+
+                <div class="table-card">
+
+                    <div class="table-header">
+
+                        <h3>
+                            Income Details
+                        </h3>
+
+                    </div>
+
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Source
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    %
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="publicIncomeTable">
+
+                            <!-- Data will be loaded here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         EXPENSE SECTION
+    ====================================================== -->
+
+    <section class="content-section alternate" id="expenses">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        UNIVERSITY EXPENDITURE
+                    </span>
+
+                    <h2>
+                        Where Is University Money Spent?
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="financial-layout">
+
+
+                <!-- EXPENSE TABLE -->
+
+                <div class="table-card">
+
+                    <div class="table-header">
+
+                        <h3>
+                            Expense Details
+                        </h3>
+
+                    </div>
+
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Category
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    %
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="publicExpenseTable">
+
+                            <!-- Data will be loaded here -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
+                <!-- EXPENSE CHART -->
+
+                <div class="chart-card">
+
+                    <h3>
+                        Expense Distribution
+                    </h3>
+
+                    <canvas id="expenseChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BUDGET SECTION
+    ====================================================== -->
+
+    <section class="content-section" id="budget">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        UNIVERSITY BUDGET
+                    </span>
+
+                    <h2>
+                        Budget Allocation
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="budget-grid">
+
+
+                <div class="budget-card">
+
+                    <span>
+                        Approved Budget
+                    </span>
+
+                    <h3 id="approvedBudget">
+                        ₹0
+                    </h3>
+
+                </div>
+
+
+                <div class="budget-card">
+
+                    <span>
+                        Actual Expenditure
+                    </span>
+
+                    <h3 id="actualExpenditure">
+                        ₹0
+                    </h3>
+
+                </div>
+
+
+                <div class="budget-card">
+
+                    <span>
+                        Remaining
+                    </span>
+
+                    <h3 id="remainingBudget">
+                        ₹0
+                    </h3>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="chart-card large-chart">
+
+                <h3>
+                    Department-wise Budget vs Expenditure
+                </h3>
+
+                <canvas id="budgetChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         REPORTS
+    ====================================================== -->
+
+    <section class="content-section alternate" id="reports">
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        OFFICIAL DOCUMENTS
+                    </span>
+
+                    <h2>
+                        Financial Reports
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="reports-list" id="publicReports">
+
+
+                <!-- Example report -->
+
+                <div class="report-item">
+
+                    <div class="report-icon">
+                        PDF
+                    </div>
+
+                    <div class="report-info">
+
+                        <h3>
+                            Annual Financial Statement
+                        </h3>
+
+                        <p>
+                            Financial Year 2025–26
+                        </p>
+
+                    </div>
+
+                    <a href="#" class="view-report-btn">
+                        View
+                    </a>
+
+                </div>
+
+
+                <div class="report-item">
+
+                    <div class="report-icon">
+                        PDF
+                    </div>
+
+                    <div class="report-info">
+
+                        <h3>
+                            Annual Budget Report
+                        </h3>
+
+                        <p>
+                            Financial Year 2025–26
+                        </p>
+
+                    </div>
+
+                    <a href="#" class="view-report-btn">
+                        View
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section class="content-section" id="about">
+
+        <div class="container about-box">
+
+            <span class="section-label">
+                ABOUT THIS PORTAL
+            </span>
+
+            <h2>
+                Financial Transparency
+            </h2>
+
+            <p>
+
+                This portal provides students, parents, faculty,
+                researchers and members of the public with easy
+                access to university financial information.
+
+                Financial information is published and maintained
+                by the authorised university administration.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PUBLIC FOOTER ================= -->
+
+    <footer class="main-footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <h3>
+                    University Financial Portal
+                </h3>
+
+                <p>
+                    Transparency • Accountability • Trust
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    Last Updated:
+                    <strong id="lastUpdated">
+                        Not Available
+                    </strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     ADMIN LOGIN MODAL
+===================================================== -->
+
+<div class="modal" id="adminLoginModal">
+
+    <div class="modal-box">
+
+
+        <button
+            class="close-modal"
+            onclick="closeAdminLogin()">
+
+            ×
+
+        </button>
+
+
+        <div class="admin-login-header">
+
+            <div class="admin-icon">
+                🔐
+            </div>
+
+            <h2>
+                Admin Login
+            </h2>
+
+            <p>
+                Authorised University Administration Only
+            </p>
+
+        </div>
+
+
+
+        <form id="adminLoginForm">
+
+
+            <div class="form-group">
+
+                <label>
+                    Admin Email / Username
+                </label>
+
+                <input
+                    type="text"
+                    id="adminUsername"
+                    placeholder="Enter username"
+                    required>
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter password"
+                    required>
+
+            </div>
+
+
+
+            <button
+                type="submit"
+                class="login-submit">
+
+                Login to Dashboard
+
+            </button>
+
+
+            <p
+                id="loginError"
+                class="login-error">
+            </p>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<div id="adminPanel" class="admin-panel">
+
+
+    <!-- ================= ADMIN SIDEBAR ================= -->
+
+    <aside class="admin-sidebar">
+
+
+        <div class="admin-brand">
+
+            <div class="admin-logo">
+                U
+            </div>
+
+            <div>
+
+                <h2>
+                    University Admin
+                </h2>
+
+                <span>
+                    Financial Management
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <nav class="admin-navigation">
+
+
+            <a
+                href="#adminDashboard"
+                class="active"
+                onclick="showAdminSection('dashboard')">
+
+                <span>▦</span>
+                Dashboard
+
+            </a>
+
+
+            <a
+                href="#incomeManagement"
+                onclick="showAdminSection('income')">
+
+                <span>₹</span>
+                Income Management
+
+            </a>
+
+
+            <a
+                href="#expenseManagement"
+                onclick="showAdminSection('expenses')">
+
+                <span>↓</span>
+                Expense Management
+
+            </a>
+
+
+            <a
+                href="#budgetManagement"
+                onclick="showAdminSection('budget')">
+
+                <span>▤</span>
+                Budget Management
+
+            </a>
+
+
+            <a
+                href="#reportManagement"
+                onclick="showAdminSection('reports')">
+
+                <span>▧</span>
+                Financial Reports
+
+            </a>
+
+
+            <a
+                href="#settings"
+                onclick="showAdminSection('settings')">
+
+                <span>⚙</span>
+                Settings
+
+            </a>
+
+        </nav>
+
+
+
+        <button
+            class="logout-btn"
+            onclick="adminLogout()">
+
+            Logout
+
+        </button>
+
+
+    </aside>
+
+
+
+    <!-- ================= ADMIN MAIN ================= -->
+
+    <div class="admin-main">
+
+
+        <!-- ADMIN HEADER -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <h1 id="adminPageTitle">
+                    Financial Dashboard
+                </h1>
+
+                <p>
+                    Manage and update university financial information
+                </p>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-user-avatar">
+                    AH
+                </div>
+
+                <div>
+
+                    <strong>
+                        University Head
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             ADMIN DASHBOARD
+        ================================================== -->
+
+        <section
+            id="adminDashboard"
+            class="admin-section active">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <span>
+                        OVERVIEW
+                    </span>
+
+                    <h2>
+                        Financial Dashboard
+                    </h2>
+
+                </div>
+
+
+                <div class="year-selector">
+
+                    <label>
+                        Financial Year
+                    </label>
+
+                    <select id="adminFinancialYear">
+
+                        <option>
+                            2025–26
+                        </option>
+
+                        <option>
+                            2024–25
+                        </option>
+
+                        <option>
+                            2023–24
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ADMIN STATS -->
+
+            <div class="admin-stats-grid">
+
+
+                <div class="admin-stat">
+
+                    <span>
+                        Total Income
+                    </span>
+
+                    <h3 id="adminTotalIncome">
+                        ₹0
+                    </h3>
+
+                    <small>
+                        All Revenue Sources
+                    </small>
+
+                </div>
+
+
+                <div class="admin-stat">
+
+                    <span>
+                        Total Expenses
+                    </span>
+
+                    <h3 id="adminTotalExpenses">
+                        ₹0
+                    </h3>
+
+                    <small>
+                        All Expense Categories
+                    </small>
+
+                </div>
+
+
+                <div class="admin-stat">
+
+                    <span>
+                        Approved Budget
+                    </span>
+
+                    <h3 id="adminApprovedBudget">
+                        ₹0
+                    </h3>
+
+                    <small>
+                        Current Financial Year
+                    </small>
+
+                </div>
+
+
+                <div class="admin-stat">
+
+                    <span>
+                        Balance
+                    </span>
+
+                    <h3 id="adminBalance">
+                        ₹0
+                    </h3>
+
+                    <small>
+                        Income − Expenses
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ADMIN DASHBOARD CHART -->
+
+            <div class="admin-dashboard-grid">
+
+
+                <div class="admin-card">
+
+                    <div class="admin-card-header">
+
+                        <h3>
+                            Income Overview
+                        </h3>
+
+                    </div>
+
+                    <canvas id="adminIncomeChart"></canvas>
+
+                </div>
+
+
+                <div class="admin-card">
+
+                    <div class="admin-card-header">
+
+                        <h3>
+                            Expense Overview
+                        </h3>
+
+                    </div>
+
+                    <canvas id="adminExpenseChart"></canvas>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             INCOME MANAGEMENT
+        ================================================== -->
+
+        <section
+            id="incomeManagement"
+            class="admin-section">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <span>
+                        DATA MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Income Management
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="add-btn"
+                    onclick="openIncomeForm()">
+
+                    + Add Income
+
+                </button>
+
+            </div>
+
+
+
+            <!-- INCOME FORM -->
+
+            <div
+                class="admin-form-card"
+                id="incomeFormCard"
+                style="display:none;">
+
+
+                <h3>
+                    Add New Income Source
+                </h3>
+
+
+                <form id="incomeForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Income Source
+                            </label>
+
+                            <input
+                                type="text"
+                                id="incomeSource"
+                                placeholder="e.g. Student Fees"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Amount (₹ Crore)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="incomeAmount"
+                                placeholder="0.00"
+                                step="0.01"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Financial Year
+                            </label>
+
+                            <select id="incomeYear">
+
+                                <option>
+                                    2025–26
+                                </option>
+
+                                <option>
+                                    2024–25
+                                </option>
+
+                                <option>
+                                    2023–24
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="save-btn">
+
+                            Save Income
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="cancel-btn"
+                            onclick="closeIncomeForm()">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- INCOME MANAGEMENT TABLE -->
+
+            <div class="admin-card table-card-admin">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Income Source
+                            </th>
+
+                            <th>
+                                Financial Year
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="adminIncomeTable">
+
+                        <!-- Dynamic data -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPENSE MANAGEMENT
+        ================================================== -->
+
+        <section
+            id="expenseManagement"
+            class="admin-section">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <span>
+                        DATA MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Expense Management
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="add-btn"
+                    onclick="openExpenseForm()">
+
+                    + Add Expense
+
+                </button>
+
+            </div>
+
+
+
+            <!-- EXPENSE FORM -->
+
+            <div
+                class="admin-form-card"
+                id="expenseFormCard"
+                style="display:none;">
+
+
+                <h3>
+                    Add New Expense
+                </h3>
+
+
+                <form id="expenseForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Expense Category
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expenseCategory"
+                                placeholder="e.g. Staff Salaries"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Amount (₹ Crore)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="expenseAmount"
+                                placeholder="0.00"
+                                step="0.01"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Department
+                            </label>
+
+                            <input
+                                type="text"
+                                id="expenseDepartment"
+                                placeholder="e.g. Administration">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Financial Year
+                            </label>
+
+                            <select id="expenseYear">
+
+                                <option>
+                                    2025–26
+                                </option>
+
+                                <option>
+                                    2024–25
+                                </option>
+
+                                <option>
+                                    2023–24
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            class="save-btn">
+
+                            Save Expense
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="cancel-btn"
+                            onclick="closeExpenseForm()">
+
+                            Cancel
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- EXPENSE TABLE -->
+
+            <div class="admin-card table-card-admin">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Year
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="adminExpenseTable">
+
+                        <!-- Dynamic data -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             BUDGET MANAGEMENT
+        ================================================== -->
+
+        <section
+            id="budgetManagement"
+            class="admin-section">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <span>
+                        BUDGET CONTROL
+                    </span>
+
+                    <h2>
+                        Budget Management
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-form-card">
+
+
+                <h3>
+                    Update University Budget
+                </h3>
+
+
+                <form id="budgetForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Total Approved Budget
+                            </label>
+
+                            <input
+                                type="number"
+                                id="budgetAmount"
+                                placeholder="₹ Crore"
+                                step="0.01">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Capital Budget
+                            </label>
+
+                            <input
+                                type="number"
+                                id="capitalBudget"
+                                placeholder="₹ Crore"
+                                step="0.01">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Operational Budget
+                            </label>
+
+                            <input
+                                type="number"
+                                id="operationalBudget"
+                                placeholder="₹ Crore"
+                                step="0.01">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Financial Year
+                            </label>
+
+                            <select id="budgetYear">
+
+                                <option>
+                                    2025–26
+                                </option>
+
+                                <option>
+                                    2024–25
+                                </option>
+
+                                <option>
+                                    2023–24
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        Update Budget
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             REPORT MANAGEMENT
+        ================================================== -->
+
+        <section
+            id="reportManagement"
+            class="admin-section">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <span>
+                        DOCUMENT MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Financial Reports
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-form-card">
+
+
+                <h3>
+                    Upload Financial Report
+                </h3>
+
+
+                <form id="reportForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Report Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="reportTitle"
+                                placeholder="Annual Financial Statement"
+                                required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Financial Year
+                            </label>
+
+                            <select id="reportYear">
+
+                                <option>
+                                    2025–26
+                                </option>
+
+                                <option>
+                                    2024–25
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Report File
+                            </label>
+
+                            <input
+                                type="file"
+                                id="reportFile"
+                                accept=".pdf">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        Upload Report
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+
+            <div class="admin-card">
+
+                <h3>
+                    Published Reports
+                </h3>
+
+
+                <div id="adminReportsList">
+
+                    <!-- Reports will appear here -->
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SETTINGS
+        ================================================== -->
+
+        <section
+            id="settings"
+            class="admin-section">
+
+
+            <div class="admin-section-heading">
+
+                <div>
+
+                    <span>
+                        SYSTEM SETTINGS
+                    </span>
+
+                    <h2>
+                        Portal Settings
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="admin-form-card">
+
+
+                <h3>
+                    University Information
+                </h3>
+
+
+                <form id="universitySettingsForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>
+                                University Name
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="University Name">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                University Email
+                            </label>
+
+                            <input
+                                type="email"
+                                placeholder="admin@university.edu">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Financial Head Name
+                            </label>
+
+                            <input
+                                type="text"
+                                placeholder="Name of authorised head">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Contact Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                placeholder="+91 XXXXX XXXXX">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        Save Settings
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="../js/script.js"></script>
+
+
+</body>
+
+</html>
+```
